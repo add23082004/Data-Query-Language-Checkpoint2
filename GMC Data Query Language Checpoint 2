@@ -1,0 +1,143 @@
+DROP TABLE Harvest
+DROP TABLE Producer
+DROP TABLE Wine
+
+--1 Convert the entity relationship diagram into relational model.
+
+CREATE TABLE Producer(
+    NumP INT IDENTITY(1, 1) PRIMARY KEY,
+    FirstName VARCHAR(200) NOT NULL,
+    LastName VARCHAR(201) NOT NULL,
+    Region VARCHAR(202) );
+
+CREATE TABLE Wine(
+    NumW INT IDENTITY(1, 1) PRIMARY KEY,
+    Category VARCHAR(200) NOT NULL,
+    Year_ INT NOT NULL,
+    Degree DECIMAL);
+
+CREATE TABLE Harvest (
+    NumP INT NOT NULL,
+    NumW INT NOT NULL,    
+    Quantity INT NOT NULL,
+    FOREIGN KEY (NumP) REFERENCES Producer(NumP),
+    FOREIGN KEY (NumW) REFERENCES Wine(NumW));
+
+
+INSERT INTO Wine (Category, Year_, Degree) 
+VALUES 
+        ('Red_Wine', 1857, 12.5), ('Sweet_Wine', 1950, 8.4),
+        ('White_Wine', 1968, 14.2), ('Still_Wine', 1999, 16.8),
+        ('Rosé_Wine', 1902, 10.8), ('Aromatic_Wine', 1836, 10.1),
+        ('Sparkling_Wine', 1985, 13.9), ('Varietal_Wine', 1977, 13.0),
+        ('Dessert_Wine', 1923, 9.7), ('Blended_Wine', 1888, 11.9),
+        ('Fortified_Wine', 2007, 11.3), ('Old_World_Wine', 1934, 9.2),
+        ('Dry_Wine', 1815, 15.6), ('New_World_Wine', 1818, 12.7),
+        ('Organic_Wine', 2001, 14.5);
+
+INSERT INTO Producer (FirstName, LastName, Region) 
+VALUES 
+        ('Ezra', 'Gardner', 'Sousse'), ('Alan', 'Roberts', 'Qingdao'),
+        ('Paisley', 'Cortes', 'Luanda'), ('Banks', 'Terrell', 'Bangkok'),
+        ('Paityn', 'Woodard', 'Pune'), ('Westley', 'Douglas', 'Madrid'),
+        ('Aniyah', 'Booth', 'Luanda'), ('Chaim', 'Sandoval', 'Fukuoka'),
+        ('Elsie', 'Strickland', 'Bucharest'), ('Keegan', 'Benjamin', 'Hangzhou'),
+        ('Jianna', 'Conrad', 'Karachi'), ('Dilan', 'Blair', 'Luanda'),
+        ('Frances', 'Olsen', 'Hangzhou'), ('Skyler', 'Choi', 'Sousse'),
+        ('Karla', 'Rasmussen', 'Hamburg'), ('Will', 'McConnell', 'Hangzhou'),
+        ('Denise', 'Mitchell', 'Sousse'), ('Jaxon', 'Schneider', 'Bucharest'),
+        ('Delaney', 'Rosario', 'Belo_Horizonte'), ('Jedidiah', 'Wilkins', 'Sousse'),
+        ('Amalia', 'Tran', 'Bucharest'), ('Braxton', 'Moss', 'Qingdao'),
+        ('Bianca', 'Correa', 'Sousse'), ('Zakai', 'Rosales', 'Luanda'),
+        ('Kinley', 'Chung', 'Surat'), ('Ira', 'Cortes', 'Luanda'),
+        ('Lea', 'Daugherty', 'Sousse'), ('Turner', 'Edwards', 'Hangzhou'),
+        ('Ivy', 'English', 'Vienna'), ('Junior', 'Colon', 'Sousse'),
+        ('Remy', 'Pitts', 'Belo_Horizonte'), ('Trey', 'Hoover', 'Bangkok'),
+        ('Virginia', 'Rhoades', 'Sousse'), ('Lian', 'Davenport', 'Bucharest'),
+        ('Adrianna', 'Hebert', 'Luanda'), ('Guillermo', 'Wolfe', 'Vienna'),
+        ('Hallie', 'Leal', 'Sousse'), ('Cedric', 'Yates', 'Madrid'),
+        ('Charley', 'Gomez', 'Pune'), ('Isaiah', 'Lu', 'Hangzhou'),
+        ('Emani', 'Briggs', 'Shenzhen'), ('Case', 'Winters', 'Sousse'),
+        ('Kataleya', 'Valentine', 'Sousse'), ('Demetrius', 'Casey', 'Brussels'),
+        ('Sylvia', 'Hodges', 'Sousse'), ('Alonzo', 'Clark', 'Lahore'),
+        ('Chloe', 'Chambers', 'Sousse'), ('Orion', 'Lopez', 'Shenzhen'),
+        ('Gianna', 'Beil', 'Sousse'), ('Ariel', 'Brandt', 'Dallas'),
+        ('Loretta', 'Lawson', 'Sousse'), ('Lane', 'Wiggins', 'Surat'),
+        ('Capri', 'Dejesus', 'Hyderabad'), ('Rio', 'Bentley', 'Pune'),
+        ('Jaylin', 'Xiong', 'Sousse'), ('Azrael', 'Ahmed', 'Bangkok'),
+        ('Jolie', 'Morgan', 'Fukuoka'), ('Hunter', 'Park', 'Bucharest'),
+        ('Lia', 'Ayers', 'Belgrade'), ('Ulises', 'Valdez', 'Hangzhou'),
+        ('Diana', 'Chavez', 'Mexico_City'), ('Lila', 'Pratt', 'Sousse'),
+        ('Rowen', 'Baxter', 'Luanda'), ('Lara', 'Guzman', 'Cologne'),
+        ('Jude', 'McIntosh', 'Hamburg'), ('Gwen', 'Gill', 'Luanda'),
+        ('Matthias', 'Schmitt', 'Hangzhou'), ('Queen', 'Hodges', 'Luanda'),
+        ('Alonzo', 'Gilmore', 'Bucharest'), ('Genesis', 'Daniels', 'Madrid'),
+        ('Ember', 'Poole', 'Dallas'), ('Quincy', 'Hancock', 'Lahore'),
+        ('Katelyn', 'White', 'Hamburg'), ('Aiden', 'Harrington', 'Surat'),
+        ('Legacy', 'Owens', 'Qingdao'), ('Adriel', 'Nguyen', 'Hyderabad'),
+        ('Nova', 'Ortiz','Vienna'), ('Landon', 'Kirk', 'Madrid'),
+        ('Ellis', 'Carroll', 'Mexico_City'), ('Oscar', 'Blair', 'Karachi'),
+        ('Frances', 'Bond', 'Mumbai'), ('Roger', 'Douglas', 'Cologne'),
+        ('Aniyah', 'Huffman', 'Fukuoka'), ('Chris', 'Xiong', 'Belgrade'),
+        ('Amayah', 'Ortiz', 'Karachi');
+                               
+
+
+INSERT INTO Harvest (NumP, NumW, Quantity)
+VALUES 
+        (15, 2, 112), (20, 5, 20), (6, 1, 110), (8, 4, 126), (44, 6, 145), (83, 7, 200),
+        (62, 1, 164), (59, 9, 177), (60, 14, 165), (13, 12, 98), (66, 3, 87),
+        (70, 6, 140), (2, 8, 182), (12, 5, 50), (75, 9, 117), (54, 8, 127), (7, 3, 196),
+        (79, 11, 189), (73, 10, 117), (68, 10, 168), (57, 12, 182), (38, 13, 132),
+        (11, 15, 65), (16, 15, 132), (1, 4, 66), (84, 7, 144), (17, 9, 97),(52, 5, 172),
+        (49, 3, 187), (21, 1, 200), (71, 11, 139), (3, 13, 68), (32, 12, 101),
+        (42, 1, 182),(69, 2, 98), (19, 3, 75), (31, 4, 114), (64, 9, 124), (56, 3, 154),
+        (37, 2, 151), (65, 6, 171), (23, 1, 99), (46, 10, 172), (29, 15, 60),
+        (10, 13, 76), (78, 4, 191), (33, 6, 185), (41, 3, 177), (76, 8, 174),
+        (58, 7, 135), (34, 6, 187), (63, 5, 110), (25, 6, 83), (82, 8, 110),(9, 9, 96),
+        (61, 1, 187), (40, 10, 186), (36, 11, 63), (22, 12, 140), (53, 3, 51),
+        (48, 5, 148), (55, 2, 81), (74, 7, 57), (72, 9, 131),(18, 6, 77), (39, 7, 124),
+        (5, 13, 165), (24, 1, 62), (49, 2, 189), (77, 1, 141), (50, 5, 83),(28, 9, 162),
+        (26, 6, 112), (27, 14, 70), (67, 5, 118), (14, 9, 50), (43, 8, 154),
+        (30, 6, 149), (85, 7, 114), (4, 9, 183), (80, 4, 125), (47, 3, 132),
+        (51, 2, 104), (81, 1, 92), (35, 4, 154);
+
+--2 Give the list the producers.
+SELECT * FROM Producer 
+
+--3 Give the list of producers sorted by name.
+SELECT FirstName, LastName FROM Producer
+
+--4 Give the list the producers of Sousse.
+SELECT * FROM Producer
+WHERE Region = 'Sousse'
+
+--5 Calculate the total quantity of wine produced having the number 12.
+SELECT Wine.NumW, SUM(Harvest.Quantity) AS total_quantity
+FROM Harvest
+JOIN Wine ON Wine.NumW = Harvest.NumW
+WHERE Harvest.NumW = 12
+GROUP BY Wine.NumW
+
+--6 Calculate the quantity of wine produced by category.
+SELECT Harvest.NumW, Category, SUM(Harvest.Quantity) AS total_quantity
+FROM Harvest
+JOIN Wine ON Wine.NumW = Harvest.NumW
+GROUP BY Harvest.NumW, Category
+
+--7 Which producers in the Sousse region have harvested at least one wine in quantities greater than 300 liters? We want the names and first names of the producers, sorted in alphabetical order.
+SELECT Producer.LastName, Producer.FirstName
+FROM Producer
+JOIN Harvest ON Producer.NumP = Harvest.NumP
+WHERE Region = 'Sousse'
+GROUP BY Producer.LastName, Producer.FirstName
+HAVING COUNT(*) >= 1 AND CAST(SUM(Harvest.Quantity * 1.7) AS DECIMAL) > 300
+ORDER BY Producer.LastName, Producer.FirstName;
+
+--8 List the wine numbers that have a degree greater than 12 and that have been produced by producer number 24.
+SELECT Harvest.NumW
+FROM Harvest
+JOIN Producer ON Producer.NumP = Harvest.NumP
+JOIN Wine ON Wine.NumW = Harvest.NumW
+WHERE Wine.Degree > 12 AND Harvest.NumP = 24
+
